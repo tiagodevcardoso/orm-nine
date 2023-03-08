@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{2F5F5E59-AFFC-410A-A4EF-61C3B784003D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.Nine.Database.Configurations", "ORM.Nine.Database.Configurations\ORM.Nine.Database.Configurations.csproj", "{F02850AF-DA30-402B-964A-E728000AD8A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.Nine.Database.Api", "ORM.Nine.Database.Api\ORM.Nine.Database.Api.csproj", "{3B2140C4-E793-42A9-B3BC-86E7C0717114}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.Nine.Database.Execute", "ORM.Nine.Database.Execute\ORM.Nine.Database.Execute.csproj", "{E2DB8DCF-901B-40D1-9413-2A22A4BA07E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RESTful", "RESTful", "{2507D818-C3A7-4476-B8F3-C4EFC8537002}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{5656920D-1463-44F6-889F-08ACAA159306}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{87D92F50-DC4C-4A64-BF2C-B75893504807}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORM.Nine.Database.Models", "ORM.Nine.Database.Models\ORM.Nine.Database.Models.csproj", "{2ED2A140-4229-45B8-96A3-DD710791D9DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F02850AF-DA30-402B-964A-E728000AD8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02850AF-DA30-402B-964A-E728000AD8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02850AF-DA30-402B-964A-E728000AD8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02850AF-DA30-402B-964A-E728000AD8A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B2140C4-E793-42A9-B3BC-86E7C0717114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2140C4-E793-42A9-B3BC-86E7C0717114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2140C4-E793-42A9-B3BC-86E7C0717114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2140C4-E793-42A9-B3BC-86E7C0717114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2DB8DCF-901B-40D1-9413-2A22A4BA07E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2DB8DCF-901B-40D1-9413-2A22A4BA07E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2DB8DCF-901B-40D1-9413-2A22A4BA07E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2DB8DCF-901B-40D1-9413-2A22A4BA07E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ED2A140-4229-45B8-96A3-DD710791D9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ED2A140-4229-45B8-96A3-DD710791D9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ED2A140-4229-45B8-96A3-DD710791D9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ED2A140-4229-45B8-96A3-DD710791D9DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F02850AF-DA30-402B-964A-E728000AD8A6} = {5656920D-1463-44F6-889F-08ACAA159306}
+		{3B2140C4-E793-42A9-B3BC-86E7C0717114} = {2507D818-C3A7-4476-B8F3-C4EFC8537002}
+		{E2DB8DCF-901B-40D1-9413-2A22A4BA07E3} = {87D92F50-DC4C-4A64-BF2C-B75893504807}
+		{2507D818-C3A7-4476-B8F3-C4EFC8537002} = {2F5F5E59-AFFC-410A-A4EF-61C3B784003D}
+		{5656920D-1463-44F6-889F-08ACAA159306} = {2F5F5E59-AFFC-410A-A4EF-61C3B784003D}
+		{87D92F50-DC4C-4A64-BF2C-B75893504807} = {2F5F5E59-AFFC-410A-A4EF-61C3B784003D}
+		{2ED2A140-4229-45B8-96A3-DD710791D9DA} = {5656920D-1463-44F6-889F-08ACAA159306}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1A205D9-F7D6-4AD9-BC47-EB3909213C75}
+	EndGlobalSection
+EndGlobal

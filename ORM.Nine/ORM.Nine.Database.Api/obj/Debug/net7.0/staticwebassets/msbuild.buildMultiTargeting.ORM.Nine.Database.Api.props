@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ORM.Nine.Database.Api.props" />
+</Project>

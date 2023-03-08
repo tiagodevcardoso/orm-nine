@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ORM.Nine.Database.Models/1.0.0": {
+        "runtime": {
+          "ORM.Nine.Database.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ORM.Nine.Database.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

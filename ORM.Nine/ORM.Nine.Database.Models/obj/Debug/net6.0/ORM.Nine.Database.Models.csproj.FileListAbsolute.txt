@@ -1,0 +1,12 @@
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\bin\Debug\net6.0\ORM.Nine.Database.Models.deps.json
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\bin\Debug\net6.0\ORM.Nine.Database.Models.dll
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\bin\Debug\net6.0\ORM.Nine.Database.Models.pdb
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.csproj.AssemblyReference.cache
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.AssemblyInfoInputs.cache
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.AssemblyInfo.cs
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.csproj.CoreCompileInputs.cache
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.dll
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\refint\ORM.Nine.Database.Models.dll
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ORM.Nine.Database.Models.pdb
+D:\Pessoal\Codigos\orm-nine\ORM.Nine\ORM.Nine.Database.Models\obj\Debug\net6.0\ref\ORM.Nine.Database.Models.dll
