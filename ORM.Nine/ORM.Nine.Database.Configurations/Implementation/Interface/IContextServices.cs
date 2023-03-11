@@ -1,4 +1,5 @@
-﻿using ORM.Nine.Database.Models.Output;
+﻿using ORM.Nine.Database.Models.Input;
+using ORM.Nine.Database.Models.Output;
 using System.Data;
 
 namespace ORM.Nine.Database.Configurations
@@ -7,14 +8,18 @@ namespace ORM.Nine.Database.Configurations
     {
         void Insert(string SqlQuery);
 
-        JsonReturn SelectJson(string Procedure, string Table, int NumberPage, string Search, string Sort, string Conditions);
+        JsonReturn SelectJson(string Table, int NumberPage, string Search, string Sort, string Conditions);
+
+        JsonReturn InsertJson(string Table, List<InputApiParametersConditions>? Properties);
+
+        JsonReturn UpdateJson(string Table, string IdPrimaryKey, List<InputApiParametersConditions>? Properties);
+
+        JsonReturn DeleteJson(string Table, string IdPrimaryKey, List<string> IdsPrimaryKeys = null);
 
         DataTable SelectDataTable(string SqlQuery);
 
         List<T> Select<T>(string SqlQuery);
 
-        string MountProcedure(string Procedure, Dictionary<string, object> Parametros);
-
-        string MountConditions(Dictionary<string, string> Conditions);
+        string MountConditions(Dictionary<string, string>? Conditions);
     }
 }

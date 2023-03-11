@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.Api\\ORM.Nine.Database.Api.csproj": {}
+    "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.API\\ORM.Nine.Database.API.csproj": {}
   },
   "projects": {
-    "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.Api\\ORM.Nine.Database.Api.csproj": {
+    "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.API\\ORM.Nine.Database.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.Api\\ORM.Nine.Database.Api.csproj",
-        "projectName": "ORM.Nine.Database.Api",
-        "projectPath": "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.Api\\ORM.Nine.Database.Api.csproj",
+        "projectUniqueName": "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.API\\ORM.Nine.Database.API.csproj",
+        "projectName": "ORM.Nine.Database.API",
+        "projectPath": "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.API\\ORM.Nine.Database.API.csproj",
         "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-        "outputPath": "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.Api\\obj\\",
+        "outputPath": "D:\\Pessoal\\Codigos\\orm-nine\\ORM.Nine\\ORM.Nine.Database.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,15 +52,15 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[7.0.2, )"
-            },
-            "Swashbuckle.AspNetCore": {
+            "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[6.5.0, )"
             },
-            "Swashbuckle.AspNetCore.Swagger": {
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[6.5.0, )"
             }

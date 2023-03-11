@@ -2,8 +2,8 @@
 {
     public class ConnectionStrings
     {
-        public static string NameDatabase { set; get; } = "[NAME_DATABASE]";
+        public static string NameDatabase { set; get; } = "[DATABASE]";
 
-        public static string Database { get; set; } = $"Data Source=[DATA_SOURCE];Initial Catalog={NameDatabase};User ID=[USER_ID];Password=[PASSWORD];";
+        public static string Database { get; set; } = $"Data Source=[SERVER];Initial Catalog=Master;User ID=[USER_ID];Password=[PASSWORD];";
     }
 }

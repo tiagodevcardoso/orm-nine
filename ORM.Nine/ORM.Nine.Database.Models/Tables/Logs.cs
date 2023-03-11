@@ -7,7 +7,7 @@ namespace ORM.Nine.Database.Models.Tables
     [Table("logs")]
     public class Logs : _default
     {
-        [PropertyField(Name = "error", Type = "varchar(250)", Order = 2, Default = "")]
-        public string? Error { get; set; }
+        [PropertyField(Name = "description", Type = "varchar(250)", Order = 2, Default = "")]
+        public string? Description { get; set; }
     }
 }

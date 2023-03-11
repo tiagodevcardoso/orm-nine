@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ORM.Nine.Database.Configurations\ORM.Nine.Database.Configurations.csproj" />
+    <ProjectReference Include="..\ORM.Nine.Database.Models\ORM.Nine.Database.Models.csproj" />
+  </ItemGroup>
+
 </Project>

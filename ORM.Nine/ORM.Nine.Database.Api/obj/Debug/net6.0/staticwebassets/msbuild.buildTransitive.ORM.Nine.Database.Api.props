@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\ORM.Nine.Database.Api.props" />
-</Project>

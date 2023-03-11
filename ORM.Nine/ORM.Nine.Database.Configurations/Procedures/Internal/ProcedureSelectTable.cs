@@ -1,4 +1,5 @@
-﻿using ORM.Nine.Database.Models.Input;
+﻿using ORM.Nine.Database.Models.Configurations;
+using ORM.Nine.Database.Models.Input;
 using System.Text;
 
 namespace ORM.Nine.Database.Configurations.Procedures.Internal
@@ -14,6 +15,7 @@ namespace ORM.Nine.Database.Configurations.Procedures.Internal
             var sql = new StringBuilder();
 
             sql.Append(@$"
+			USE {ConnectionStrings.NameDatabase};
             DECLARE 	@TABLE			VARCHAR(150) = '{input.Table}';
 			DECLARE 	@LENGTHPAGE		INT = {input.LengthPage};
 			DECLARE 	@NUMBERPAGE		INT = {input.NumberPage};
@@ -26,6 +28,11 @@ namespace ORM.Nine.Database.Configurations.Procedures.Internal
 
 				DECLARE @COUNTSQL VARCHAR(MAX) = '_id'
 				DECLARE @SQL VARCHAR(MAX);
+
+				IF @SORT = ''
+				BEGIN
+					SET @SORT = @COUNTSQL;
+				END
 	
 				SET @SQL = '
 				-- datos with table

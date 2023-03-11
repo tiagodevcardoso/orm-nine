@@ -48,7 +48,7 @@ namespace ORM.Nine.Database.Configurations
         /// <param name="Search"></param>
         /// <param name="Sort"></param>
         /// <returns></returns>
-        public JsonReturn SelectJson(string Procedure, string Table, int NumberPage, string Search, string Sort, string Conditions)
+        public JsonReturn SelectJson(string Table, int NumberPage, string Search, string Sort, string Conditions)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
@@ -58,8 +58,325 @@ namespace ORM.Nine.Database.Configurations
                 try
                 {
                     var cond = new ProcedureSelectTableInput { Table = Table, LengthPage = 10, NumberPage = NumberPage, Search = Search, Sort = Sort, Conditions = Conditions };
+                    var query = new ProcedureSelectTable().Default(cond);
+                    SqlDataAdapter da = new SqlDataAdapter(query, connection);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
 
-                    SqlDataAdapter da = new SqlDataAdapter(new ProcedureSelectTable().Default(cond), connection);
+                    List<DataTable> dtList = new();
+
+                    for (int i = 0; i < ds.Tables.Count; i++)
+                    {
+                        dtList.Add(ds.Tables[i]);
+                    }
+
+                    DataTable dt = dtList[0];
+
+                    list.Table = Table;
+                    list.Quantity = dt.Rows.Count;
+                    list.Rows = new List<JsonReturnRows>();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var line = new JsonReturnRows();
+                        line.Item = new List<JsonReturnRowsDetails>();
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+
+                            if (column.ColumnName.Equals("error"))
+                            {
+                                list.Error = new JsonReturnError() { Type = (string)dt.Rows[0]["error"], Value = (string)dt.Rows[0]["error_value"] };
+                                list.Quantity = 0;
+                                break;
+                            }
+
+                            if (!column.ColumnName.Equals("_id"))
+                            {
+                                var _item = new JsonReturnRowsDetails()
+                                {
+                                    Column = column.ColumnName,
+                                    Value = !DBNull.Value.Equals(row[column.ColumnName]) ? row[column.ColumnName] : null
+                                };
+
+                                line.Item.Add(_item);
+                            }
+                        }
+
+                        if (list.Error == null)
+                        {
+                            line.Id = (Guid)row["_id"];
+
+                            list.Rows.Add(line);
+
+                            if (dtList.Count > 1)
+                            {
+                                DataTable pagination = dtList[1];
+
+                                list.Pagination = new JsonReturnPagination()
+                                {
+                                    CurrentPage = (int?)pagination.Rows[0]["currentPage"],
+                                    LastPage = (int?)pagination.Rows[0]["lastPage"],
+                                    LaterPage = (int?)pagination.Rows[0]["laterPage"],
+                                    PreviousPage = (int?)pagination.Rows[0]["previousPage"],
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ErrorTry)
+                {
+                    list.Table = Table;
+                    list.Quantity = 0;
+                    list.Error = new JsonReturnError() { Type = "ER - X", Value = ErrorTry.Message };
+                }
+
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// Method to fetch data from database and convert to json format
+        /// </summary>
+        /// <param name="Procedure"></param>
+        /// <param name="Table"></param>
+        /// <param name="Properties"></param>
+        /// <returns></returns>
+        public JsonReturn InsertJson(string Table, List<InputApiParametersConditions>? Properties)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                connection.Open();
+                var list = new JsonReturn();
+
+                try
+                {
+                    string properties = "", values = "";
+
+                    foreach (var item in Properties)
+                    {
+                        properties += item.Field + ",";
+                        values += "''" + item.Value + "'',";
+                    }
+
+                    properties = properties.Remove(properties.Length - 1);
+                    values = values.Remove(values.Length - 1);
+
+                    var cond = new ProcedureInsertTableInput { Table = Table, Property = properties, Values = values };
+                    var query = new ProcedureInsertDatabase().Default($"USE {ConnectionStrings.NameDatabase}; DECLARE @id UNIQUEIDENTIFIER; SET @id  = NEWID(); INSERT {cond.Table} (_id, {cond.Property}) VALUES (@id, {cond.Values}); SELECT * FROM {cond.Table} WHERE _id = @id;");
+                    SqlDataAdapter da = new SqlDataAdapter(query, connection);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    List<DataTable> dtList = new();
+
+                    for (int i = 0; i < ds.Tables.Count; i++)
+                    {
+                        dtList.Add(ds.Tables[i]);
+                    }
+
+                    DataTable dt = dtList[0];
+
+                    list.Table = Table;
+                    list.Quantity = dt.Rows.Count;
+                    list.Rows = new List<JsonReturnRows>();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var line = new JsonReturnRows();
+                        line.Item = new List<JsonReturnRowsDetails>();
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+
+                            if (column.ColumnName.Equals("error"))
+                            {
+                                list.Error = new JsonReturnError() { Type = (string)dt.Rows[0]["error"], Value = (string)dt.Rows[0]["error_value"] };
+                                list.Quantity = 0;
+                                break;
+                            }
+
+                            if (!column.ColumnName.Equals("_id"))
+                            {
+                                var _item = new JsonReturnRowsDetails()
+                                {
+                                    Column = column.ColumnName,
+                                    Value = !DBNull.Value.Equals(row[column.ColumnName]) ? row[column.ColumnName] : null
+                                };
+
+                                line.Item.Add(_item);
+                            }
+                        }
+
+                        if (list.Error == null)
+                        {
+                            line.Id = (Guid)row["_id"];
+
+                            list.Rows.Add(line);
+
+                            if (dtList.Count > 1)
+                            {
+                                DataTable pagination = dtList[1];
+
+                                list.Pagination = new JsonReturnPagination()
+                                {
+                                    CurrentPage = (int?)pagination.Rows[0]["currentPage"],
+                                    LastPage = (int?)pagination.Rows[0]["lastPage"],
+                                    LaterPage = (int?)pagination.Rows[0]["laterPage"],
+                                    PreviousPage = (int?)pagination.Rows[0]["previousPage"],
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ErrorTry)
+                {
+                    list.Table = Table;
+                    list.Quantity = 0;
+                    list.Error = new JsonReturnError() { Type = "ER - X", Value = ErrorTry.Message };
+                }
+
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// Method to fetch data from database and convert to json format
+        /// </summary>
+        /// <param name="Procedure"></param>
+        /// <param name="Table"></param>
+        /// <param name="Properties"></param>
+        /// <returns></returns>
+        public JsonReturn UpdateJson(string Table, string IdPrimaryKey, List<InputApiParametersConditions>? Properties)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                connection.Open();
+                var list = new JsonReturn();
+
+                try
+                {
+                    var values = "";
+
+                    foreach (var item in Properties)
+                    {
+                        values += item.Field + " = ''" + item.Value + "'',";
+                    }
+
+                    values = values.Remove(values.Length - 1);
+
+                    var cond = new ProcedureInsertTableInput { Table = Table, Values = values };
+                    var query = new ProcedureInsertDatabase().Default($"USE {ConnectionStrings.NameDatabase}; UPDATE {cond.Table} SET {cond.Values} WHERE _id = ''{IdPrimaryKey}''; SELECT * FROM {cond.Table} WHERE _id = ''{IdPrimaryKey}'';");
+                    SqlDataAdapter da = new SqlDataAdapter(query, connection);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    List<DataTable> dtList = new();
+
+                    for (int i = 0; i < ds.Tables.Count; i++)
+                    {
+                        dtList.Add(ds.Tables[i]);
+                    }
+
+                    DataTable dt = dtList[0];
+
+                    list.Table = Table;
+                    list.Quantity = dt.Rows.Count;
+                    list.Rows = new List<JsonReturnRows>();
+
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        var line = new JsonReturnRows();
+                        line.Item = new List<JsonReturnRowsDetails>();
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+
+                            if (column.ColumnName.Equals("error"))
+                            {
+                                list.Error = new JsonReturnError() { Type = (string)dt.Rows[0]["error"], Value = (string)dt.Rows[0]["error_value"] };
+                                list.Quantity = 0;
+                                break;
+                            }
+
+                            if (!column.ColumnName.Equals("_id"))
+                            {
+                                var _item = new JsonReturnRowsDetails()
+                                {
+                                    Column = column.ColumnName,
+                                    Value = !DBNull.Value.Equals(row[column.ColumnName]) ? row[column.ColumnName] : null
+                                };
+
+                                line.Item.Add(_item);
+                            }
+                        }
+
+                        if (list.Error == null)
+                        {
+                            line.Id = (Guid)row["_id"];
+
+                            list.Rows.Add(line);
+
+                            if (dtList.Count > 1)
+                            {
+                                DataTable pagination = dtList[1];
+
+                                list.Pagination = new JsonReturnPagination()
+                                {
+                                    CurrentPage = (int?)pagination.Rows[0]["currentPage"],
+                                    LastPage = (int?)pagination.Rows[0]["lastPage"],
+                                    LaterPage = (int?)pagination.Rows[0]["laterPage"],
+                                    PreviousPage = (int?)pagination.Rows[0]["previousPage"],
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ErrorTry)
+                {
+                    list.Table = Table;
+                    list.Quantity = 0;
+                    list.Error = new JsonReturnError() { Type = "ER - X", Value = ErrorTry.Message };
+                }
+
+                return list;
+            }
+        }
+
+        /// <summary>
+        /// Method to fetch data from database and convert to json format
+        /// </summary>
+        /// <param name="Procedure"></param>
+        /// <param name="Table"></param>
+        /// <param name="Properties"></param>
+        /// <returns></returns>
+        public JsonReturn DeleteJson(string Table, string IdPrimaryKey, List<string> IdsPrimaryKeys = null)
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                connection.Open();
+                var list = new JsonReturn();
+
+                try
+                {
+                    string conditions = "";
+
+                    if(IdsPrimaryKeys.Count > 0)
+                    {
+                        for (int i = 0; i < IdsPrimaryKeys.Count; i++)
+                        {
+                            conditions += $"''{IdsPrimaryKeys[i]}'',";
+                        }
+                    }
+                    if(!String.IsNullOrEmpty(IdPrimaryKey))
+                    {
+                        conditions += $"''{IdPrimaryKey}'',";
+                    }
+
+                    conditions = conditions.Remove(conditions.Length - 1);
+
+                    var query = new ProcedureInsertDatabase().Default($"USE {ConnectionStrings.NameDatabase}; DELETE FROM {Table} WHERE _id IN ({conditions}); SELECT * FROM {Table} WHERE _id IN ({conditions});");
+                    SqlDataAdapter da = new SqlDataAdapter(query, connection);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
 
@@ -210,21 +527,7 @@ namespace ORM.Nine.Database.Configurations
             }
         }
 
-        public string MountProcedure(string Procedure, Dictionary<string, object> Parametros)
-        {
-            string Retorno = $"EXEC {Procedure} ";
-
-            foreach (var item in Parametros)
-            {
-                Retorno += "'" + item.Value + "',";
-            }
-
-            Retorno = Retorno.Remove(Retorno.Length - 1);
-
-            return Retorno;
-        }
-
-        public string MountConditions(Dictionary<string, string> Conditions)
+        public string MountConditions(Dictionary<string, string>? Conditions)
         {
             string conditions = "";
             if (Conditions.Count > 0)
