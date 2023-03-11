@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ORM.Nine.Database.Configurations;
-using ORM.Nine.Database.Models.Input;
-using ORM.Nine.Database.Models.Output;
+using ORM.Nine.Database.Models.External.Input;
+using ORM.Nine.Database.Models.External.Output;
 
 namespace ORM.Nine.Database.API.Controllers
 {

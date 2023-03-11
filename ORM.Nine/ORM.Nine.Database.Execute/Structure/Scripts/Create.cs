@@ -1,4 +1,4 @@
-﻿using ORM.Nine.Database.Models.Table;
+﻿using ORM.Nine.Database.Models.Internal.Table;
 
 namespace ORM.Nine.Database.Execute.Structure.Scripts
 {

@@ -1,5 +1,5 @@
-﻿using ORM.Nine.Database.Models.Attributes;
-using ORM.Nine.Database.Models.Table;
+﻿using ORM.Nine.Database.Models.Internal.Attributes;
+using ORM.Nine.Database.Models.Internal.Table;
 using System.Reflection;
 
 namespace ORM.Nine.Database.Execute.Structure

@@ -1,4 +1,4 @@
-﻿using ORM.Nine.Database.Models.Attributes;
+﻿using ORM.Nine.Database.Models.Internal.Attributes;
 
 namespace ORM.Nine.Database.Models.Tables.Default
 {

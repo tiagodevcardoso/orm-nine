@@ -1,4 +1,4 @@
-﻿using ORM.Nine.Database.Models.Attributes;
+﻿using ORM.Nine.Database.Models.Internal.Attributes;
 using ORM.Nine.Database.Models.Tables.Default;
 using System.ComponentModel.DataAnnotations.Schema;
 

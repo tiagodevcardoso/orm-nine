@@ -1,5 +1,5 @@
-﻿using ORM.Nine.Database.Models.Input;
-using ORM.Nine.Database.Models.Output;
+﻿using ORM.Nine.Database.Models.External.Input;
+using ORM.Nine.Database.Models.External.Output;
 using System.Data;
 
 namespace ORM.Nine.Database.Configurations

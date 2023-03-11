@@ -1,8 +1,7 @@
 ﻿using ORM.Nine.Database.Configurations;
 using ORM.Nine.Database.Execute.Structure;
 using ORM.Nine.Database.Execute.Structure.Scripts;
-using ORM.Nine.Database.Models.Configurations;
-using ORM.Nine.Database.Models.Table;
+using ORM.Nine.Database.Models.Internal.Configurations;
 
 namespace ORM.Nine.Database.Execute
 {

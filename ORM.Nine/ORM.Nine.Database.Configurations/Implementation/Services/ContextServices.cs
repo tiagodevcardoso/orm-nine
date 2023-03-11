@@ -1,7 +1,7 @@
 ﻿using ORM.Nine.Database.Configurations.Procedures.Internal;
-using ORM.Nine.Database.Models.Configurations;
-using ORM.Nine.Database.Models.Input;
-using ORM.Nine.Database.Models.Output;
+using ORM.Nine.Database.Models.External.Input;
+using ORM.Nine.Database.Models.External.Output;
+using ORM.Nine.Database.Models.Internal.Configurations;
 using System.Data;
 using System.Data.SqlClient;
 
